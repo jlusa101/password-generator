@@ -22,5 +22,3 @@ https://jlusa101.github.io/password-generator/
 
 ## Contribution
 Made by Joona Lusa
-
-### ©️2021 Password Generator

@@ -20,11 +20,11 @@ generateBtn.addEventListener("click", writePassword);
 // Function that prompts the user for the length of their desired password
 // Returns the length
 var passLength = function() {
-    var length = window.prompt("Please enter the length of your password. (Between 8 - 128 characaters)");
+    var length = window.prompt("Please enter the length of your password. (Between 8 - 128 characters)");
 
     // Validating user input, ensuring password length is not empty and between 8 to 128 characters
     while (length === null || length === "" || length < minLength || length > maxLength) {
-        length = window.prompt("Please enter the length of your password. (Between 8 - 128 characaters)");
+        length = window.prompt("Please enter the length of your password. (Between 8 - 128 characters)");
     }
     return length;
 };
@@ -60,14 +60,14 @@ var spcNum = function() {
 var generatePassword = function() {
     var pass = "";
     var charSet = "";
+    // Array that is going to hold all user choices
+    var userChoices = [];
     // Array that holds the different character sets
     var sets = ["abcdefghijklmnopqrstuvwxyz",
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
         "0123456789",
         "!@#$%^&*()_+~\\`|}{[]:;?><,./-="
     ];
-    // Array that is going to hold all user choices
-    var userChoices = [];
     var pLength = passLength();
     var pLower = spcLower();
     var pUpper = spcUpper();
