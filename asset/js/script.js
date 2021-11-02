@@ -28,24 +28,7 @@ var passLength = function() {
     return length;
 };
 
-// Function to prompt user if they wish to include lowercase characters
-// Returns either true or false
-var spcLower = function() {
-    var incLower = window.confirm("Do you wish to include lowercase characters?");
-    return incLower;
-};
-// Function to prompt user if they wish to include uppercase characters
-// Returns either true or false
-var spcUpper = function() {
-    var incUpper = window.confirm("Do you wish to include uppercase characters?");
-    return incUpper;
-};
-// Function to prompt user if they wish to include numeric characters
-// Returns either true or false
-var spcNum = function() {
-    var incNum = window.confirm("Do you wish to include numeric values?");
-    return incNum;
-};
+
 // Function to prompt user if they wish to include special characters
 // Returns either true or false
 var scpSpecial = function() {
@@ -60,13 +43,13 @@ var generatePassword = function() {
     var upperCharSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     var specialCharSet = "!@#$%^&*()_+~\\`|}{[]:;?><,./-=";
     var pLength = passLength();
-    var pLower = spcLower();
-    var pUpper = spcUpper();
-    var pNum = spcNum();
     var pSpecial = scpSpecial();
-    // for (var i = 1; i <= pLength; i++) {
-    //     pass += charSet.charAt(Math.floor(Math.random() * charSet.length));
-    // }
 
-    // return pass;
+    var charSet = numSet + specialCharSet;
+    console.log(charSet);
+    for (var i = 1; i <= pLength; i++) {
+        pass += charSet.charAt(Math.floor(Math.random() * charSet.length));
+    }
+
+    return pass;
 }
