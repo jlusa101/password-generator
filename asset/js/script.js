@@ -31,7 +31,7 @@ var passLength = function() {
 
 // Function to prompt user if they wish to include special characters
 // Returns either true or false
-var scpSpecial = function() {
+var spcSpecial = function() {
     var incSpecial = window.confirm("Do you wish to include special characters?");
     return incSpecial;
 };
@@ -60,29 +60,43 @@ var spcNum = function() {
 var generatePassword = function() {
     var pass = "";
     var charSet = "";
+    // Array that holds the different character sets
     var sets = ["abcdefghijklmnopqrstuvwxyz",
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
         "0123456789",
         "!@#$%^&*()_+~\\`|}{[]:;?><,./-="
     ];
+    // Array that is going to hold all user choices
     var userChoices = [];
     var pLength = passLength();
     var pLower = spcLower();
     var pUpper = spcUpper();
     var pNum = spcNum();
-    var pSpecial = scpSpecial();
+    var pSpecial = spcSpecial();
 
+    // If user had not chosen any of the character choices
+    while (!pLower && !pUpper && !pNum && !pSpecial) {
+        window.alert("One option must be selected!");
+        pLower = spcLower();
+        pUpper = spcUpper();
+        pNum = spcNum();
+        pSpecial = spcSpecial();
+    }
+
+    // Pushing the user choices into an array
     userChoices.push(pLower);
     userChoices.push(pUpper);
     userChoices.push(pNum);
     userChoices.push(pSpecial);
 
+    // Looping through the array to find which requirements user wants to implement
     for (var i = 0; i < userChoices.length; i++) {
         if (userChoices[i] == true) {
             charSet += sets[i];
         }
     }
 
+    // Generating the password
     for (var j = 1; j <= pLength; j++) {
         pass += charSet.charAt(Math.floor(Math.random() * charSet.length));
     }
