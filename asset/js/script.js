@@ -76,7 +76,7 @@ var generatePassword = function() {
 
     // If user had not chosen any of the character choices
     while (!pLower && !pUpper && !pNum && !pSpecial) {
-        window.alert("One option must be selected!");
+        window.alert("At least one option must be selected!");
         pLower = spcLower();
         pUpper = spcUpper();
         pNum = spcNum();
