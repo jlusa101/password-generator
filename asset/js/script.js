@@ -20,11 +20,11 @@ generateBtn.addEventListener("click", writePassword);
 // Function that prompts the user for the length of their desired password
 // Returns the length
 var passLength = function() {
-    var length = window.prompt("Please enter the length of your password(Between 8 - 128 characaters)?");
+    var length = window.prompt("Please enter the length of your password. (Between 8 - 128 characaters)");
 
     // Validating user input, ensuring password length is not empty and between 8 to 128 characters
     while (length === null || length === "" || length < minLength || length > maxLength) {
-        length = window.prompt("Please enter the length of your password(Between 8 - 128 characaters)?");
+        length = window.prompt("Please enter the length of your password. (Between 8 - 128 characaters)");
     }
     return length;
 };
@@ -51,7 +51,7 @@ var spcUpper = function() {
 // Function to prompt user if they wish to include numeric characters
 // Returns either true or false
 var spcNum = function() {
-    var incNum = window.confirm("Do you wish to include numeric values?");
+    var incNum = window.confirm("Do you wish to include numeric characters?");
     return incNum;
 };
 
