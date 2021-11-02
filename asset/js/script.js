@@ -17,8 +17,9 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+// Function that prompts the user for the length of their desired password
+// Returns the length
 var passLength = function() {
-    // Prompting user to enter the length of their desired password
     var length = window.prompt("Please enter the length of your password(Between 8 - 128 characaters)?");
 
     // Validating user input, ensuring password length is not empty and between 8 to 128 characters
@@ -27,7 +28,6 @@ var passLength = function() {
     }
     return length;
 };
-
 
 // Function to prompt user if they wish to include special characters
 // Returns either true or false
@@ -55,26 +55,36 @@ var spcNum = function() {
     return incNum;
 };
 
+// Function that generates a password based on the criteria the user inputted
+// Returns the generated password
 var generatePassword = function() {
     var pass = "";
-    var numSet = "0123456789";
-    var lowerCharSet = "abcdefghijklmnopqrstuvwxyz";
-    var upperCharSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    var specialCharSet = "!@#$%^&*()_+~\\`|}{[]:;?><,./-=";
     var charSet = "";
+    var sets = ["abcdefghijklmnopqrstuvwxyz",
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+        "0123456789",
+        "!@#$%^&*()_+~\\`|}{[]:;?><,./-="
+    ];
+    var userChoices = [];
     var pLength = passLength();
     var pLower = spcLower();
     var pUpper = spcUpper();
     var pNum = spcNum();
     var pSpecial = scpSpecial();
 
-    if (pLower && pUpper && pNum && pSpecial == true) {
-        charSet = lowerCharSet + upperCharSet + numSet + specialCharSet;
-        for (var i = 1; i <= pLength; i++) {
-            pass += charSet.charAt(Math.floor(Math.random() * charSet.length));
+    userChoices.push(pLower);
+    userChoices.push(pUpper);
+    userChoices.push(pNum);
+    userChoices.push(pSpecial);
+
+    for (var i = 0; i < userChoices.length; i++) {
+        if (userChoices[i] == true) {
+            charSet += sets[i];
         }
-        return pass;
     }
 
-
+    for (var j = 1; j <= pLength; j++) {
+        pass += charSet.charAt(Math.floor(Math.random() * charSet.length));
+    }
+    return pass;
 }
